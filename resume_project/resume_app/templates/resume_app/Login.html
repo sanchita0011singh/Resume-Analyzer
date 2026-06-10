@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | AI Resume Analyzer</title>
+
+    {% include 'resume_app/common/common_css.html' %}
+</head>
+
+<body class="bg-light">
+
+<!-- 🔹 Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Resume Analyzer</a>
+        <div>
+            <a href="/register/" class="btn btn-outline-light btn-sm">Register</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔹 Login Form -->
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4">Login 🔐</h2>
+
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/Login/">
+         {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Enter username" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100">Login 🚀</button>
+            </div>
+
+        </form>
+
+        <p class="text-center mt-3">
+            Don't have an account? <a href="/register/">Register</a>
+        </p>
+
+    </div>
+</div>
+
+</body>
+</html>

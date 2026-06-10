@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Result</title>
+
+    {% include 'resume_app/common/common_css.html' %}
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4">Resume Analysis Result</h2>
+
+        <!-- Match Percentage -->
+        <div class="text-center mb-4">
+            <h4>Match Percentage</h4>
+            <h1 class="text-success">{{ match_percentage }}%</h1>
+        </div>
+
+        <div class="row">
+
+            <!-- Matched Skills -->
+            <div class="col-md-6">
+                <h5 class="text-success">Matched Skills</h5>
+                <ul class="list-group">
+                    {% for skill in matched %}
+                        <li class="list-group-item">{{ skill }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No matched skills found</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Missing Skills -->
+            <div class="col-md-6">
+                <h5 class="text-danger">Missing Skills</h5>
+                <ul class="list-group">
+                    {% for skill in missing %}
+                        <li class="list-group-item">{{ skill }}</li>
+                    {% empty %}
+                        <li class="list-group-item">No missing skills 🎉</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Suggestions -->
+        <div class="mt-4">
+            <h5 class="text-primary">Suggestions</h5>
+            <ul class="list-group">
+                {% for suggestion in suggestions %}
+                    <li class="list-group-item">{{ suggestion }}</li>
+                {% empty %}
+                    <li class="list-group-item">No suggestions available</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Upload Another Resume</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
